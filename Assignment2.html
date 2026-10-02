@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+        }
+
+        .form-container {
+            width: 400px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+
+        #message {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+
+        <h1>Student Registration</h1>
+
+        <form id="registrationForm">
+
+            <label>Full Name</label>
+            <input type="text" id="name">
+
+            <label>Email</label>
+            <input type="text" id="email">
+
+            <label>Phone Number</label>
+            <input type="text" id="phone">
+
+            <label>Date of Birth</label>
+            <input type="date" id="dob">
+
+            <label>Gender</label>
+            <select id="gender">
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+
+            <label>Password</label>
+            <input type="password" id="password">
+
+            <label>Confirm Password</label>
+            <input type="password" id="confirmPassword">
+
+            <label>Address</label>
+            <textarea id="address"></textarea>
+
+            <button type="submit">Register</button>
+
+            <p id="message"></p>
+
+        </form>
+    </div>
+
+
+    <script>
+
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let dob = document.getElementById("dob").value;
+            let gender = document.getElementById("gender").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            let address = document.getElementById("address").value;
+
+            let message = document.getElementById("message");
+
+
+            // Check all fields
+            if (name == "" || email == "" || phone == "" || dob == "" ||
+                gender == "" || password == "" || confirmPassword == "" || address == "") {
+
+                message.innerHTML = "Please fill all the fields.";
+                message.style.color = "red";
+                return;
+            }
+
+
+            // Check email
+            if (!email.includes("@") || !email.includes(".")) {
+
+                message.innerHTML = "Please enter a valid email.";
+                message.style.color = "red";
+                return;
+            }
+
+
+            // Check phone number
+            if (phone.length != 10 || isNaN(phone)) {
+
+                message.innerHTML = "Please enter a valid 10-digit phone number.";
+                message.style.color = "red";
+                return;
+            }
+
+
+            // Check password
+            if (password != confirmPassword) {
+
+                message.innerHTML = "Passwords do not match.";
+                message.style.color = "red";
+                return;
+            }
+
+
+            // Successful registration
+            message.innerHTML = "Registration Successful!";
+            message.style.color = "green";
+
+        });
+
+    </script>
+
+</body>
+</html>
