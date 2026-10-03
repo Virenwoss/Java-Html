@@ -1,0 +1,47 @@
+class Student {
+    // Private data members
+    private String name;
+    private int age;
+    private double marks;
+
+    // Setter methods
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setMarks(double marks) {
+        this.marks = marks;
+    }
+
+    // Getter methods
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public double getMarks() {
+        return marks;
+    }
+
+    public static void main(String[] args) {
+        // Creating Student object
+        Student s = new Student();
+
+        // Setting values using setters
+        s.setName("Rahul");
+        s.setAge(20);
+        s.setMarks(85.5);
+
+        // Displaying values using getters
+        System.out.println("Student Name: " + s.getName());
+        System.out.println("Student Age: " + s.getAge());
+        System.out.println("Student Marks: " + s.getMarks());
+    }
+}
